@@ -1,5 +1,6 @@
 package com.huang.Aio.Client;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
@@ -29,6 +30,12 @@ public class AioWriteHandler implements CompletionHandler<Integer, ByteBuffer> {
 
     @Override
     public void failed(Throwable exc, ByteBuffer attachment) {
-
+        System.out.println("数据发送失败...");
+        try {
+            clientChannel.close();
+            latch.countDown();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
