@@ -24,9 +24,10 @@ public class AioReadHandler implements CompletionHandler<Integer, ByteBuffer> {
         buffer.flip();
         byte[] message = new byte[buffer.remaining()];
         buffer.get(message);
-        String calResult = null;
         try {
             String expression = new String(message, "UTF-8");
+            System.out.println("服务器收到消息: " + expression);
+            String calResult = null;
             try {
                 calResult = Calculator.cal(expression).toString();
             } catch (ScriptException e) {
@@ -34,6 +35,7 @@ public class AioReadHandler implements CompletionHandler<Integer, ByteBuffer> {
                 e.printStackTrace();
             }
 
+            doWrite(calResult);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
