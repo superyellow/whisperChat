@@ -1,4 +1,4 @@
-package com.huang.Aio.Client;
+package com.huang.aio.Client;
 
 import java.util.Scanner;
 

@@ -1,6 +1,6 @@
-package com.huang.Aio.Server;
+package com.huang.aio.Server;
 
-import com.huang.Aio.util.Calculator;
+import com.huang.aio.util.Calculator;
 
 import javax.script.ScriptException;
 import java.io.IOException;
